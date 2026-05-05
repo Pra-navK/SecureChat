@@ -8,8 +8,8 @@ class user(models.Model):
         return self.name
     
 class Message(models.Model):
-    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_messages', db_index=True)
-    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_messages', db_index=True)
+    sender = models.ForeignKey(user, on_delete=models.CASCADE, related_name='sent_messages', db_index=True)
+    receiver = models.ForeignKey(user, on_delete=models.CASCADE, related_name='received_messages', db_index=True)
 
     encrypted_message = models.TextField()   # instead of content
     encrypted_key = models.TextField(null=True, blank=True)  # for hybrid encryption
